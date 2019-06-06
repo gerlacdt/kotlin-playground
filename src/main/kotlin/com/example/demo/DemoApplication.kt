@@ -27,3 +27,24 @@ fun parseInt(str: String): Int? {
 		return null
 	}
 }
+
+fun fruits(): Unit {
+	val items = listOf("apple", "banana", "kiwifruit")
+	for (item in items) {
+		println(item)
+	}
+}
+
+fun describe(obj: Any): String =
+	when (obj) {
+		1          -> "One"
+		"Hello"    -> "Greeting"
+		is Long    -> "Long"
+		!is String -> "Not a string"
+		else       -> "Unknown"
+	}
+
+
+fun sumOfSquares(lst: List<Int>): Int {
+	return lst.reduce { acc: Int, x: Int ->	acc + x*x }
+}

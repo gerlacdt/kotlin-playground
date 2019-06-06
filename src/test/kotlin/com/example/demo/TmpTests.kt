@@ -34,4 +34,21 @@ class TmpTests {
         val result = parseInt("abc")
         assertEquals(null, result)
     }
+
+    @Test
+    fun fruitsTest() {
+        fruits()
+    }
+
+    @Test
+    fun describeTest() {
+        val result = describe("Hello")
+        assertEquals("Greeting", result)
+    }
+
+    @Test
+    fun sumOfSquaresTest() {
+        val result = sumOfSquares(listOf(1,2,3,4))
+        assertEquals(30, result)
+    }
 }

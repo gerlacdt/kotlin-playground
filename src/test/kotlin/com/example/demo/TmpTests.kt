@@ -12,6 +12,12 @@ class TmpTests {
     }
 
     @Test
+    fun subtractTest() {
+        val result = subtract(4, 2)
+        assertEquals(2, result)
+    }
+
+    @Test
     fun maxOfTest() {
         val result = maxOf(3, 7)
         assertEquals(7, result)

@@ -10,6 +10,8 @@ fun sum(a: Int, b: Int): Int {
 	return a + b
 }
 
+fun subtract(a: Int, b: Int) = a - b
+
 fun maxOf(a: Int, b: Int): Int {
 	if (a > b) {
 		return a

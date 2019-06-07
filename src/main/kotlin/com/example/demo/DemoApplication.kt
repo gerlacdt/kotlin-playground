@@ -20,7 +20,7 @@ fun maxOf(a: Int, b: Int): Int {
 	}
 }
 
-fun parseInt(str: String): Int? {
+fun myParseInt(str: String): Int? {
 	try {
 		return str.toInt()
 	} catch (e: RuntimeException) {

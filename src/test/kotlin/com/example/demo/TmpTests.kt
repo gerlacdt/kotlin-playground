@@ -25,13 +25,13 @@ class TmpTests {
 
     @Test
     fun parseIntTest() {
-        val result = parseInt("5")
+        val result = myParseInt("5")
         assertEquals(5, result)
     }
 
     @Test
     fun parseIntFailingTest() {
-        val result = parseInt("abc")
+        val result = myParseInt("abc")
         assertEquals(null, result)
     }
 
@@ -74,6 +74,17 @@ class TmpTests {
     fun pairsTest() {
         val result = withPairs(10, 1)
         assertEquals(Pair(1, 10), result)
+    }
+
+    @Test
+    fun test2() {
+        val x = 10
+        val s = "10"
+        val result = when (x) {
+            myParseInt(s) -> true
+            else -> false
+        }
+        assertTrue(result)
     }
 }
 

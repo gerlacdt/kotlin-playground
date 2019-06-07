@@ -51,4 +51,30 @@ class TmpTests {
         val result = sumOfSquares(listOf(1,2,3,4))
         assertEquals(30, result)
     }
+
+    @Test
+    fun filterTest() {
+        val fruits = listOf("banana", "avocado", "apple", "kiwifruit")
+        val result = fruits
+            .filter { it.startsWith("a") }
+            .sortedBy { it.length }
+            .map { it.toUpperCase() }
+        assertEquals(listOf("APPLE", "AVOCADO"), result)
+    }
+
+    @Test
+    fun PersonTest() {
+        val p = Person("first", "last", 18)
+
+        assertEquals(18, p.age)
+        assertEquals("first", p.firstname)
+    }
+
+    @Test
+    fun pairsTest() {
+        val result = withPairs(10, 1)
+        assertEquals(Pair(1, 10), result)
+    }
 }
+
+

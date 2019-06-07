@@ -48,3 +48,11 @@ fun describe(obj: Any): String =
 fun sumOfSquares(lst: List<Int>): Int {
 	return lst.reduce { acc: Int, x: Int ->	acc + x*x }
 }
+
+
+fun withPairs(a: Int, b: Int): Pair<Int, Int> {
+	// val p = Pair(1, 2)
+	val p = if (a < b) a to b else b to a
+	return p
+
+}

@@ -56,3 +56,25 @@ fun withPairs(a: Int, b: Int): Pair<Int, Int> {
 	return p
 
 }
+
+fun List<Int>.sum(): Int {
+	var result = 0
+	for (i in this) {
+		result += i
+	}
+	return result
+}
+
+fun isValidIdentifier(s: String): Boolean {
+	fun isValidChar(c: Char): Boolean {
+		if (c == '_' || c.isLetter() || c.isDigit()) {
+			return true
+		}
+		return false
+	}
+	if (s.isEmpty() || s[0].isDigit()) return false
+	for (c in s) {
+		if (!isValidChar(c)) return false
+	}
+	return true
+}

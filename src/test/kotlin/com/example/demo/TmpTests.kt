@@ -86,6 +86,23 @@ class TmpTests {
         }
         assertTrue(result)
     }
+
+    @Test
+    fun sumExtend() {
+        val l = listOf(1,2,3,4)
+        val result = l.sum()
+        assertEquals(10, result)
+    }
+
+    @Test
+    fun identifierTest() {
+        assertEquals(true, isValidIdentifier("name"))   // true
+        assertEquals(true, isValidIdentifier("_name"))  // true
+        assertEquals(true, isValidIdentifier("_12"))    // true
+        assertEquals(false, isValidIdentifier(""))       // false
+        assertEquals(false, isValidIdentifier("012"))    // false
+        assertEquals(false, isValidIdentifier("no$"))    // false
+    }
 }
 
 

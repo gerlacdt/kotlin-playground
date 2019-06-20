@@ -103,6 +103,101 @@ class TmpTests {
         assertEquals(false, isValidIdentifier("012"))    // false
         assertEquals(false, isValidIdentifier("no$"))    // false
     }
+
+    @Test
+    fun emptyOrNullTest() {
+        val s1: String? = null
+        val s2: String? = ""
+        assertTrue(s1.isEmptyOrNull())
+        assertTrue(s2.isEmptyOrNull())
+
+        val s3 = "   "
+        assertFalse(s3.isEmptyOrNull())
+    }
+
+    @Test
+    fun smartCastTest() {
+        val s = "foo"
+        val result1 = (s as? Int)    // null
+        assertNull(result1)
+        assertThrows(ClassCastException::class.java,  {
+            println(s as Int?)    // exception
+        })
+    }
+
+    @Test
+    fun predicatesTest() {
+        fun List<Int>.allNonZero() =  all { it != 0 }
+        fun List<Int>.allNonZero1() =  none { it == 0 }
+        fun List<Int>.allNonZero2() =  !any { it == 0 }
+
+        fun List<Int>.containsZero() =  any { it == 0 }
+        fun List<Int>.containsZero1() =  !all { it != 0 }
+        fun List<Int>.containsZero2() =  !none { it == 0  }
+
+        val list1 = listOf(1, 2, 3)
+        assertTrue(list1.allNonZero())
+        assertTrue(list1.allNonZero1())
+        assertTrue(list1.allNonZero2())
+
+        assertFalse(list1.containsZero())
+        assertFalse(list1.containsZero1())
+        assertFalse(list1.containsZero2())
+
+        val list2 = listOf(0, 1, 2)
+        assertFalse(list2.allNonZero())
+        assertFalse(list2.allNonZero1())
+        assertFalse(list2.allNonZero2())
+
+        assertTrue(list2.containsZero())
+        assertTrue(list2.containsZero1())
+        assertTrue(list2.containsZero2())
+    }
+
+    @Test
+    fun foldTest() {
+        val items = listOf(1, 2, 3, 4, 5)
+        val result = items.fold(0, {
+            acc: Int, i: Int ->
+            val result = acc + i
+            result
+        })
+        assertEquals(15, result)
+    }
+
+    @Test
+    fun differentTest() {
+        // The values should be different:
+        println(different)
+        println(different)
+        println(different)
+    }
+
+    @Test
+    fun lateInitTest() {
+        val a = A()
+        a.setUp()
+        a.display()
+    }
+
+    @Test
+    fun npeTest() {
+        B("a")
+    }
+
+    @Test
+    fun equalsTest() {
+        assertTrue(equals1(Value("abc"), Value("abc")))
+        assertFalse(equals1(Value("abc"), null))
+        assertFalse(equals1(null, Value("abc")))
+        assertTrue(equals1(null, null))
+
+        assertTrue(equals2(Value("abc"), Value("abc")))
+        assertFalse(equals2(Value("abc"), null))
+        assertFalse(equals2(null, Value("abc")))
+        assertTrue(equals2(null, null))
+    }
+
 }
 
 

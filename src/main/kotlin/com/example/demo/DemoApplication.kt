@@ -78,3 +78,15 @@ fun isValidIdentifier(s: String): Boolean {
 	}
 	return true
 }
+
+fun String?.isEmptyOrNull(): Boolean {
+	if (this == null || this == "") {
+		return true
+	}
+	return false
+}
+
+var i = 0
+
+val different: Int
+	get() = i++

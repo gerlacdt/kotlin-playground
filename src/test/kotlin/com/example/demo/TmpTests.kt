@@ -198,6 +198,31 @@ class TmpTests {
         assertTrue(equals2(null, null))
     }
 
+    @Test
+    fun inlineFilterTest() {
+        val list = listOf(1, 2, 3)
+
+        assertEquals(filterNonZero(list).toString(), "[1, 2, 3]")
+        assertEquals(filterNonZeroGenerated(list).toString(),"[1, 2, 3]")
+    }
+
+    @Test
+    fun fibTest() {
+        assertEquals("[0, 1, 1, 2]", fibonacci().take(4).toList().toString())
+        assertEquals("[0, 1, 1, 2, 3, 5, 8, 13, 21, 34]", fibonacci().take(10).toList().toString())
+    }
+
+    @Test
+    fun wordsTest() {
+        val words = Words()
+        with(words) {
+            // The following two lines should compile:
+            "one".record()
+            +"two"
+        }
+        assertEquals("[one, two]", words.toString())
+    }
+
 }
 
 

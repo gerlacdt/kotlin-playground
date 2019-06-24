@@ -1,5 +1,7 @@
 package com.example.demo
 
+import kotlin.coroutines.*
+
 open class A1(val value: String) {
     init {
         println(value.length)

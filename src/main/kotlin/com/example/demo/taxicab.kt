@@ -73,3 +73,34 @@ fun weightedPairs(s1: Sequence<Int>, s2: Sequence<Int>,
             { mergeWeighted(s2.drop(1).map { s1car to it }, weightedPairs(s1.drop(1), s2.drop(1), weightFn),
                     weightFn) }
 }
+
+
+fun pairs(): Sequence<Pair<Int, Int>> = sequence {
+    var i = 1
+    var j = 1
+    while (true) {
+        while (i <= j) {
+            yield(i to j)
+            i++
+        }
+        i = 1
+        j++
+    }
+}
+
+fun ramanujan(n: Int = 5): List<Int> {
+    val ps = pairs().iterator()
+    val results = mutableSetOf<Int>()
+    val sums = mutableMapOf<Int, MutableList<Pair<Int, Int>>>()
+    while (results.size < n) {
+        val p = ps.next()
+        val key = cubeWeight(p)
+        val lst = sums.getOrDefault(key, mutableListOf<Pair<Int, Int>>())
+        lst.add(p)
+        sums.put(key, lst)
+        if (lst.size > 1) {
+            results.add(key)
+        }
+    }
+    return results.toList().sorted()
+}

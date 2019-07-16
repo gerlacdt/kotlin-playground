@@ -37,4 +37,17 @@ class TaxicabTests {
         val result = pairs.take(4).toList()
         println(result)
     }
+
+    @Test
+    fun pairsTest() {
+        val ps = pairs()
+        println(ps.take(16).toList())
+    }
+
+    @Test
+    fun ramanujanTest() {
+        val result = ramanujan()
+        val expected = listOf<Int>(1729, 4104, 13832, 20683, 32832)
+        assertEquals(expected, result)
+    }
 }
